@@ -4,11 +4,10 @@ package it.sevenbits.writer;
  * writing Java-code.
  */
 public class StringWriter implements IWriter {
-    public StringBuilder resultString = new StringBuilder();
+    private StringBuilder resultString = new StringBuilder();
     /**
      * entry method.
      */
-
     public void writeChar(char c) {
         resultString.append(c);
     }
@@ -17,5 +16,8 @@ public class StringWriter implements IWriter {
      */
     public void close() {
 
+    }
+    public String getResult() {
+        return resultString.toString();
     }
 }
