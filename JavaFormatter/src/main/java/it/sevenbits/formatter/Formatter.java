@@ -1,46 +1,33 @@
 package it.sevenbits.formatter;
 
+import it.sevenbits.chooser.*;
 import it.sevenbits.reader.IReader;
 import it.sevenbits.writer.IWriter;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * formatting input java-code.
  */
 public class Formatter implements IFormatter{
-     private StringBuilder resultCode = new StringBuilder();
-     private static int codeNesting = 0;
-     private  static int codeDepth = 0;
+    private StringBuilder resultCode = new StringBuilder();
+    public static int codeNesting = 0;
+    private HashMap <Character, IChooser> chooser = new HashMap<>();
+
     /**
      * entry method.
      */
     public void format(IReader reader, IWriter writer) throws IOException {
+        Selection choosing = new Selection(writer);
+        choosing.init();
+        chooser = choosing.getChooser();
         while (reader.hasChar()) {
             char c = reader.readChar();
             resultCode.append(c);
-            if (c == '{') {
-                writer.writeChar(c);
-                writer.writeChar('\n');
-                for(int i = 0; i < codeNesting; i++) {
-                    writer.writeChar('\t');
-                }
-                codeNesting++;
-            }
-            else if (c == '}') {
-                // to do smth with '}'
-                writer.writeChar(c);
-            }
-            else if (c == ';') {
-                writer.writeChar(c);
-                writer.writeChar('\n');
-                for(int i = 0; i < codeNesting-1; i++) {
-                    writer.writeChar('\t');
-                }
-            }
-            else {
-                writer.writeChar(c);
-            }
+            //
+            chooser.get(c).writingCode(c);
 
         }
         writer.close();

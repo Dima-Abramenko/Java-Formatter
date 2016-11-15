@@ -25,9 +25,9 @@ public class MainClass {
         final String outputURL = "src/main/resources/output.txt";
         final String inputString = "public static String reading(String fileName) throws IOException " +
                 "{ String data; try (Scanner scanner = new Scanner(Paths.get(fileName), StandardCharsets.UTF_8.name()) " +
-                "{ data = scanner.useDelimiter(\"\\\\A\").next(); } return data; }";
+                "{ data = scanner.useDelimiter(//A).next(); } return data; }";
 
-        IFormatter formatter = new Formatter();
+        Formatter formatter = new Formatter();
 
         IReader reader = new StringReader(inputString);
         IWriter writer = new StringWriter();
@@ -36,5 +36,6 @@ public class MainClass {
         IReader fileReader = new FileReader(inputURL);
         IWriter fileWriter = new FileWriter(outputURL);
         formatter.format(fileReader, fileWriter);
+
     }
 }
