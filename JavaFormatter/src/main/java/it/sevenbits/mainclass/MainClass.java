@@ -28,14 +28,14 @@ public class MainClass {
                 "{ data = scanner.useDelimiter(//A).next(); } return data; }";
 
         Formatter formatter = new Formatter();
-
+        /*
         IReader reader = new StringReader(inputString);
         IWriter writer = new StringWriter();
         formatter.format(reader, writer);
-
+        */
         IReader fileReader = new FileReader(inputURL);
         IWriter fileWriter = new FileWriter(outputURL);
         formatter.format(fileReader, fileWriter);
-
+        System.out.println(formatter.GetResult());
     }
 }
