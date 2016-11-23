@@ -7,26 +7,46 @@ import java.io.PrintWriter;
 /**
  *  writing formatted java-code in file.
  */
-public class FileWriter implements IWriter {
+public class FileWriter implements IWriter<Character> {
+    /**
+     * comment.
+     */
     private String outputURL;
+    /**
+     * comment.
+     */
     private PrintWriter printWriter;
+    /**
+     * comment.
+     */
     private File file;
 
-    public FileWriter(String _outputURL) throws FileNotFoundException {
-        outputURL = _outputURL;
+    /**
+     *
+     * @param output comment.
+     */
+    public FileWriter(final String output) {
+        outputURL = output;
         file = new File(outputURL);
-        printWriter = new PrintWriter(file.getAbsolutePath());
+        try {
+            printWriter = new PrintWriter(file.getAbsolutePath());
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        }
     }
+
     /**
      * entry method.
+     * @param c comment.
      */
-    public void writeChar(char c) {
+    public final void writeChar(final Character c) {
         printWriter.print(c);
     }
+
     /**
      * entry method.
      */
-    public void close() {
+    public final void close() {
         printWriter.close();
     }
 }

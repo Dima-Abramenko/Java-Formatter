@@ -1,12 +1,1 @@
-public static String reading("This is ;a string { line") throws IOException { 
-	String data;
-	try (Scanner scanner = new Scanner(Paths.get(fileName), StandardCharsets.UTF_8.name()) {
-			data = scanner.useDelimiter("\\A").next(); 
-			}
-	return data; 
-			// this is {} comment ;
-	/* This is comment ; hello}
-	hello
-	*/
-	}
-	￿
+c

@@ -1,19 +1,15 @@
 package it.sevenbits.chooser;
 
-import it.sevenbits.formatter.Formatter;
-import it.sevenbits.writer.FileWriter;
-import it.sevenbits.writer.IWriter;
-
-import java.io.FileNotFoundException;
-
 /**
  * Created by oem on 15.11.16.
  */
-public class ActionSimpleSymbol implements IChooser {
+class ActionSimpleSymbol implements IChooser {
     /**
-     * returns method
+     * returns method.
+     * @return String
+     * @param current This is current symbol
      */
-    public String writeCode(final char current) {
+    public final String writeCode(final char current) {
 
         return Character.toString(current);
 

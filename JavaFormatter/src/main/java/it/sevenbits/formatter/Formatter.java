@@ -1,37 +1,57 @@
 package it.sevenbits.formatter;
 
-import it.sevenbits.chooser.*;
+import it.sevenbits.chooser.IChooser;
+import it.sevenbits.chooser.Selection;
 import it.sevenbits.reader.IReader;
 import it.sevenbits.writer.IWriter;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
  * formatting input java-code.
  */
-public class Formatter implements IFormatter {
+public class Formatter implements IFormatter<IReader, IWriter> {
+    /**
+     * comment.
+     */
     private StringBuilder bufferChar = new StringBuilder();
+    /**
+     * comment.
+     */
     private HashMap<String, IChooser> chooser = new HashMap<>();
-    Selection choiceAction;
+    /**
+     * comment.
+     */
+    private Selection choiceAction;
 
-    public Formatter() throws FileNotFoundException {
+    /**
+     * Formatter.
+     *
+     */
+    public Formatter() {
         choiceAction = new Selection();
-        choiceAction.init();
+        try {
+            choiceAction.init();
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        }
         chooser = choiceAction.getChooser();
     }
 
     /**
      * entry method.
+     * @param reader comment.
+     * @param writer comment.
      */
-    public void format(final IReader reader, final IWriter writer) throws IOException {
+    public final void format(final IReader reader, final IWriter writer) {
 
         while (reader.hasChar()) {
-            char c = reader.readChar();
+            char c = (char) reader.readChar();
+
             bufferChar.append(c);
             String subTotal = "";
-            if (choiceAction.Test(bufferChar.length())) {
+            if (choiceAction.test(bufferChar.length())) {
                 subTotal = chooser.get(choiceAction.getAction(c, bufferChar.charAt(bufferChar.length() - 2))).writeCode(c);
             } else {
                 writer.writeChar(c);
@@ -40,14 +60,20 @@ public class Formatter implements IFormatter {
             for (char i : buffer) {
                 writer.writeChar(i);
             }
+
         }
+
         writer.close();
     }
 
     /**
-     * returns method
+     * retutn method.
+     * @return String
      */
-    public String GetResult() {
+    public final String getResult() {
+        bufferChar.setCharAt(bufferChar.length() - 1, ' ');
         return bufferChar.toString();
     }
+
+
 }

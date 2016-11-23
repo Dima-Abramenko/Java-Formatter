@@ -1,4 +1,4 @@
-package it.sevenbits;
+package it.sevenbits.writer;
 
 import it.sevenbits.writer.StringWriter;
 import org.junit.Before;
@@ -16,6 +16,7 @@ public class StringWriterTest {
         writer = new StringWriter();
         text = "c";
         writer.writeChar('c');
+        writer.writeChar(' ');
     }
     @Test
     public void testWrite() {

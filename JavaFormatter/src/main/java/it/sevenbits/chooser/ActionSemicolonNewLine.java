@@ -3,11 +3,18 @@ package it.sevenbits.chooser;
 /**
  * Created by oem on 18.11.16.
  */
-public class ActionSemicolonNewLine implements IChooser {
+class ActionSemicolonNewLine implements IChooser {
     /**
-     * entry method
+     * returns method.
+     * @return String
+     * @param current This is current symbol
      */
-    public String writeCode(final char current) {
-        return Character.toString(current);
+    public final String writeCode(final char current) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(current);
+        for (int i = 0; i < Selection.rightMargin; i++) {
+            sb.append("\t");
+        }
+        return sb.toString();
     }
 }

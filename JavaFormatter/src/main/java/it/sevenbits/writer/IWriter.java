@@ -2,12 +2,14 @@ package it.sevenbits.writer;
 
 /**
  * interface for writing in file.
+ * @param <T> comment.
  */
-public interface IWriter {
+public interface IWriter<T> {
     /**
      * entry method.
+     * @param c comment.
      */
-    void writeChar(char c);
+    void writeChar(T c);
     /**
      * entry method.
      */

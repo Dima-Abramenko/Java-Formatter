@@ -3,11 +3,13 @@ package it.sevenbits.chooser;
 /**
  * Created by oem on 18.11.16.
  */
-public class ActionMarginTrue implements IChooser {
+class ActionMarginTrue implements IChooser {
     /**
-     * returns method
+     * returns method.
+     * @return String
+     * @param current This is current symbol
      */
-    public String writeCode(final char current) {
+    public final String writeCode(final char current) {
         Selection.isMainCode = true;
         return Character.toString(current);
     }

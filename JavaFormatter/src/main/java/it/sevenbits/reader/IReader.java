@@ -1,17 +1,19 @@
 package it.sevenbits.reader;
 
-import java.io.IOException;
-
 /**
  * interface for reading.
+ * @param <T> comment.
  */
-public interface IReader {
+public interface IReader<T> {
     /**
-     * returns method.
+     *
+     * @return boolean.
      */
     boolean hasChar();
+
     /**
-     * returns method.
+     *
+     * @return char.
      */
-    char readChar() throws IOException;
+    T readChar();
 }

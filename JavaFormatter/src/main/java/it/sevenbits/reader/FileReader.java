@@ -5,30 +5,55 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- *  reading java-code out of the file.
+ * Reading files.
  */
-public class FileReader implements IReader {
-    private int character;
-    private String inputURL;
-    private BufferedReader bufferedReader;
-    public FileReader(String _inputURL) throws FileNotFoundException {
-        inputURL = _inputURL;
-        bufferedReader = new BufferedReader(new java.io.FileReader(inputURL));
-    }
+public class FileReader implements IReader<Character> {
     /**
-     * returns method.
+     * comment.
      */
-    public boolean hasChar() {
+    private int character;
+    /**
+     * comment.
+     */
+    private String inputURL;
+    /**
+     * comment.
+     */
+    private BufferedReader bufReader;
+    /**
+     *
+     * @param input comment.
+     */
+    public FileReader(final String input) {
+        inputURL = input;
+        try {
+            bufReader = new BufferedReader(new java.io.FileReader(inputURL));
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        }
+    }
+
+    /**
+     *
+     * @return Boolean.
+     */
+    public final boolean hasChar() {
         if (character == -1) {
             return false;
         }
         return true;
     }
+
     /**
-     * returns method.
+     *
+     * @return char.
      */
-    public char readChar() throws IOException {
-        character = bufferedReader.read();
+    public final Character readChar() {
+        try {
+            character = bufReader.read();
+        } catch (IOException e) {
+            e.getMessage();
+        }
         char c = (char) character;
         return c;
     }

@@ -5,8 +5,9 @@ package it.sevenbits.chooser;
  */
 public interface IChooser {
     /**
-     * entry method
-     * @params current, previous
+     * entry method.
+     * @return String
+     * @param current comment.
      */
     String writeCode(final char current);
 }

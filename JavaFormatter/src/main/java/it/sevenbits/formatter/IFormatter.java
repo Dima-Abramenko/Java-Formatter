@@ -1,16 +1,15 @@
 package it.sevenbits.formatter;
 
-import it.sevenbits.reader.IReader;
-import it.sevenbits.writer.IWriter;
-
-import java.io.IOException;
-
 /**
- * interface for formatting.
+ *
+ * @param <T> comment.
+ * @param <U> comment.
  */
-public interface IFormatter {
+public interface IFormatter<T, U> {
     /**
-     * entry method.
+     *  entry method.
+     * @param reader comment.
+     * @param writer comment.
      */
-    void format(final IReader reader, final IWriter writer) throws IOException;
+    void format(final T reader, final U writer);
 }

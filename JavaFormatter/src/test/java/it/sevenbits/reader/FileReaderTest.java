@@ -1,4 +1,4 @@
-package it.sevenbits;
+package it.sevenbits.reader;
 
 import it.sevenbits.reader.FileReader;
 import it.sevenbits.reader.IReader;

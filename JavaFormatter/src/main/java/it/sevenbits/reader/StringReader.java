@@ -6,29 +6,51 @@ import java.io.IOException;
 /**
  * reading java-code out if the String variable.
  */
-public class StringReader implements IReader {
-    private int character;
-    private String inputString;
-    private BufferedReader bufferedReader;
-
-    public StringReader(String _input) {
-        inputString = _input;
-        bufferedReader = new BufferedReader(new java.io.StringReader(inputString));
-    }
+public class StringReader implements IReader<Character> {
     /**
-     * returns method.
+     * comment.
      */
-    public boolean hasChar() {
+    private int character;
+    /**
+     * comment.
+     */
+    private String inputString;
+    /**
+     * comment.
+     */
+    private BufferedReader bufReader;
+
+    /**
+     * Constructor.
+     * @param input comment.
+     */
+    public StringReader(final String input) {
+        inputString = input;
+        bufReader = new BufferedReader(new java.io.StringReader(inputString));
+    }
+
+    /**
+     *
+     * @return boolean.
+     */
+
+    public final boolean hasChar() {
        if (character == -1) {
            return false;
        }
        return true;
     }
+
     /**
-     * returns method.
+     *
+     * @return char.
      */
-    public char readChar() throws IOException {
-        character = bufferedReader.read();
+    public final Character readChar() {
+        try {
+            character = bufReader.read();
+        } catch (IOException e) {
+            e.getMessage();
+        }
         char c = (char) character;
         return c;
     }

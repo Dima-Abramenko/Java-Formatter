@@ -1,4 +1,4 @@
 /**
- * Created by oem on 15.11.16.
+ * Created by oem.
  */
 package it.sevenbits.chooser;

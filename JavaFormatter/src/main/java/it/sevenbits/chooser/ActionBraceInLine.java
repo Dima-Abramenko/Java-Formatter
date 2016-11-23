@@ -2,12 +2,14 @@ package it.sevenbits.chooser;
 
 /**
  * Created by oem on 18.11.16.
- */
-public class ActionBraceInLine implements IChooser {
+ */mvn
+class ActionBraceInLine implements IChooser {
     /**
-     * returns method
+     * returns method.
+     * @return String
+     * @param current This is current symbol
      */
-    public String writeCode(final char current) {
+    public final String writeCode(final char current) {
         StringBuilder sb = new StringBuilder();
         sb.append(current);
         if (Selection.isMainCode && !Selection.isStringLine) {

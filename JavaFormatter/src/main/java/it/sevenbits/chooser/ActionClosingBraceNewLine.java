@@ -1,9 +1,9 @@
 package it.sevenbits.chooser;
 
 /**
- * Created by oem on 18.11.16.
+ * Created by oem on 22.11.16.
  */
-class ActionSemicolonInLine implements IChooser {
+class ActionClosingBraceNewLine implements IChooser {
     /**
      * returns method.
      * @return String
@@ -11,9 +11,9 @@ class ActionSemicolonInLine implements IChooser {
      */
     public final String writeCode(final char current) {
         StringBuilder sb = new StringBuilder();
-        sb.append(current);
         if (Selection.isMainCode  && !Selection.isStringLine) {
-            sb.append('\n');
+            sb.append(current);
+            Selection.rightMargin--;
             for (int i = 0; i < Selection.rightMargin; i++) {
                 sb.append("\t");
             }
