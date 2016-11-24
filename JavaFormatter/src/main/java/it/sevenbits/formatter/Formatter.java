@@ -13,21 +13,20 @@ import java.util.HashMap;
  */
 public class Formatter implements IFormatter<IReader, IWriter> {
     /**
-     * comment.
+     * needs to buffer last char.
      */
     private StringBuilder bufferChar = new StringBuilder();
     /**
-     * comment.
+     *  map for choosing current Action.
      */
     private HashMap<String, IChooser> chooser = new HashMap<>();
     /**
-     * comment.
+     *  Selection class object, it is init all actions.
      */
     private Selection choiceAction;
 
     /**
-     * Formatter.
-     *
+     *  awesome Formatter for java-code.
      */
     public Formatter() {
         choiceAction = new Selection();
@@ -67,7 +66,7 @@ public class Formatter implements IFormatter<IReader, IWriter> {
     }
 
     /**
-     * retutn method.
+     *
      * @return String
      */
     public final String getResult() {

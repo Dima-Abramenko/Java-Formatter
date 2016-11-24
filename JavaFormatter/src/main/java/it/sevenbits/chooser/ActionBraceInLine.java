@@ -2,7 +2,7 @@ package it.sevenbits.chooser;
 
 /**
  * Created by oem on 18.11.16.
- */mvn
+ */
 class ActionBraceInLine implements IChooser {
     /**
      * returns method.

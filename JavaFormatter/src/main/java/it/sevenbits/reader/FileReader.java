@@ -9,15 +9,15 @@ import java.io.IOException;
  */
 public class FileReader implements IReader<Character> {
     /**
-     * comment.
+     * needs to loop while.
      */
     private int character;
     /**
-     * comment.
+     * String for file's path.
      */
     private String inputURL;
     /**
-     * comment.
+     * BufferedReader for saving characters while reading.
      */
     private BufferedReader bufReader;
     /**
