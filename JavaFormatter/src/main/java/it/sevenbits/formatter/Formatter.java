@@ -1,6 +1,7 @@
 package it.sevenbits.formatter;
 
-import it.sevenbits.chooser.IChooser;
+import it.sevenbits.action.ActionSelection;
+import it.sevenbits.action.IAction;
 import it.sevenbits.chooser.Selection;
 import it.sevenbits.reader.IReader;
 import it.sevenbits.writer.IWriter;
@@ -19,23 +20,32 @@ public class Formatter implements IFormatter<IReader, IWriter> {
     /**
      *  map for choosing current Action.
      */
-    private HashMap<String, IChooser> chooser = new HashMap<>();
+    private HashMap<String, String> chooser = new HashMap<>();
+    /**
+     * comment.
+     */
+    private HashMap<String, IAction> mapChooser = new HashMap<>();
     /**
      *  Selection class object, it is init all actions.
      */
     private Selection choiceAction;
+    /**
+     *  comment.
+     */
+    private ActionSelection actSel;
 
     /**
-     *  awesome Formatter for java-code.
+     * comment.
+     * @throws FileNotFoundException comment.
      */
-    public Formatter() {
+    public Formatter() throws FileNotFoundException {
         choiceAction = new Selection();
-        try {
-            choiceAction.init();
-        } catch (FileNotFoundException e) {
-            e.getMessage();
-        }
-        chooser = choiceAction.getChooser();
+        choiceAction.init();
+        //chooser = choiceAction.getChooser();
+        actSel = new ActionSelection();
+        actSel.init();
+        mapChooser = actSel.getChooserAction();
+        chooser = actSel.getChooserState();
     }
 
     /**
@@ -44,12 +54,20 @@ public class Formatter implements IFormatter<IReader, IWriter> {
      * @param writer comment.
      */
     public final void format(final IReader reader, final IWriter writer) {
-
+        String currentState = "default";
         while (reader.hasChar()) {
             char c = (char) reader.readChar();
-
+            IAction action = mapChooser.get(actSel.getAction(currentState, c));
+            String subTotal = action.execute(c);
+            char[] buffer = subTotal.toCharArray();
+            for (char i : buffer) {
+                writer.writeChar(i);
+            }
+            currentState = chooser.get(actSel.getNextState(currentState, c));
+            /*
             bufferChar.append(c);
             String subTotal = "";
+
             if (choiceAction.test(bufferChar.length())) {
                 subTotal = chooser.get(choiceAction.getAction(c, bufferChar.charAt(bufferChar.length() - 2))).writeCode(c);
             } else {
@@ -59,7 +77,7 @@ public class Formatter implements IFormatter<IReader, IWriter> {
             for (char i : buffer) {
                 writer.writeChar(i);
             }
-
+*/
         }
 
         writer.close();
@@ -70,7 +88,7 @@ public class Formatter implements IFormatter<IReader, IWriter> {
      * @return String
      */
     public final String getResult() {
-        bufferChar.setCharAt(bufferChar.length() - 1, ' ');
+       // bufferChar.setCharAt(bufferChar.length() - 1, ' ');
         return bufferChar.toString();
     }
 

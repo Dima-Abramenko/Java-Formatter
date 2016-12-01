@@ -1,9 +1,9 @@
 package it.sevenbits.action;
 
 /**
- * Created by oem on 24.11.16.
+ * Created by oem on 30.11.16.
  */
-public class ActionDefault implements IAction {
+public class ActionClosingBrace implements IAction {
     /**
      *
      * @param current comment.

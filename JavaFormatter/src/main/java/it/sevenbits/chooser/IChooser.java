@@ -5,7 +5,6 @@ package it.sevenbits.chooser;
  */
 public interface IChooser {
     /**
-     * entry method.
      * @return String
      * @param current comment.
      */
