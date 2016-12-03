@@ -3,6 +3,7 @@ package it.sevenbits.mainclass;
 import it.sevenbits.formatter.Formatter;
 import it.sevenbits.reader.FileReader;
 import it.sevenbits.reader.IReader;
+import it.sevenbits.state.*;
 import it.sevenbits.writer.FileWriter;
 import it.sevenbits.writer.IWriter;
 
@@ -27,5 +28,9 @@ import java.io.IOException;
         IWriter fileWriter = new FileWriter(outputURL);
         formatter.format(fileReader, fileWriter);
         System.out.println(formatter.getResult());
+
+
+
+
     }
 }

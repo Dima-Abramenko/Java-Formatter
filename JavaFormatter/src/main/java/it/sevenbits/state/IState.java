@@ -8,5 +8,6 @@ public interface IState {
      *
      * @return String.
      */
-    String getState();
+    String getAction(final Action action, final char c);
+    String getStateName();
 }

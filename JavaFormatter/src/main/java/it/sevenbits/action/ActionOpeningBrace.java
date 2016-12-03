@@ -12,10 +12,10 @@ public class ActionOpeningBrace implements IAction {
     public final String execute(final char current) {
         StringBuilder sb = new StringBuilder();
         sb.append(current);
-        if (ActionSelection.isMainCode && !ActionSelection.isComment) {
+        if (Selection.isMainCode && !Selection.isComment) {
             sb.append("\n");
-            ActionSelection.rightMargin++;
-            for (int i = 0; i < ActionSelection.rightMargin; i++) {
+            Selection.rightMargin++;
+            for (int i = 0; i < Selection.rightMargin; i++) {
                 sb.append("\t");
             }
         }
