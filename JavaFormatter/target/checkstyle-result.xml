@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/mainclass/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/mainclass/MainClass.java">
+<error line="15" column="2" severity="error" message="Utility classes should not have a public or default constructor." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/formatter/Formatter.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/formatter/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/formatter/IFormatter.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/formatter/ActionDefault.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/formatter/ActionClosingBrace.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/formatter/ActionSemicolon.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/formatter/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/formatter/ActionOpeningBrace.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/formatter/IAction.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/lexer/ActionLexerSkip.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/lexer/ActionLexerDefault.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/lexer/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/lexer/ActionLexerComment.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/actions/lexer/IActionLexer.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/initializator/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/initializator/Initializator.java">
+<error line="15" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - it.sevenbits.states.lexerstate.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="22" column="1" severity="error" message="Utility classes should not have a public or default constructor." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="26" column="23" severity="error" message="Variable &apos;rightMargin&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="30" column="44" severity="error" message="Variable &apos;mapActions&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="34" column="43" severity="error" message="Variable &apos;mapTransitions&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="38" column="49" severity="error" message="Variable &apos;mapLexerActions&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="42" column="48" severity="error" message="Variable &apos;mapLexerTransition&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/writer/StringWriter.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/writer/FileWriter.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/writer/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/writer/IWriter.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/lexerstate/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/reader/FileReader.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/reader/Lexer.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/reader/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/reader/IReader.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/reader/StringReader.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/actionstate/ActionContext.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/actionstate/DefaultState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/actionstate/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/actionstate/IState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/actionstate/StringLiteralState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/CommentLexerState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/IStateLexer.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/LexerContext.java">
+<error line="34" severity="error" message="Line is longer than 80 characters (found 84)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="34" column="61" severity="error" message="&apos;state&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/EndCommentLexerState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/BlockCommentLexerState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/InLineCommentLexerState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/states/lexerstate/DefaultLexerState.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/token/IToken.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/token/package-info.java">
+</file>
+<file name="/home/oem/Документы/7bits-Java/maven-java/JavaFormatter/src/main/java/it/sevenbits/token/Token.java">
+</file>
+</checkstyle>

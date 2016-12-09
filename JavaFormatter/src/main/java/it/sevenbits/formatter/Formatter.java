@@ -1,14 +1,12 @@
 package it.sevenbits.formatter;
 
-import it.sevenbits.action.IAction;
+import it.sevenbits.initializator.Initializator;
 import it.sevenbits.reader.IReader;
-import it.sevenbits.state.Action;
-import it.sevenbits.state.DefaultState;
-import it.sevenbits.state.IState;
+import it.sevenbits.states.actionstate.ActionContext;
+import it.sevenbits.states.actionstate.DefaultState;
+import it.sevenbits.states.actionstate.IState;
 import it.sevenbits.writer.IWriter;
 
-import java.io.FileNotFoundException;
-import java.util.HashMap;
 
 /**
  * formatting input java-code.
@@ -19,16 +17,40 @@ public class Formatter implements IFormatter<IReader, IWriter> {
      */
     private StringBuilder bufferChar = new StringBuilder();
     /**
+     * comment.
+     */
+    private Initializator init = new Initializator();
+    /**
      * entry method.
      * @param reader comment.
      * @param writer comment.
      */
+    /*
+    public final void format(final IReader reader, IWriter writer) {
+        while (reader.hasMore()) {
+            IToken token = (IToken) reader.read();
+            String lexeme = token.getLexeme();
+            // do smth
+            String subTotal = "";
+            for (int i = 0; i < subTotal.length(); i++) {
+                writer.writeChar(subTotal.charAt(i));
+            }
+        }
+        writer.close();
+    }
+    */
+
+    /**
+     *
+     * @param reader interface for reading code.
+     * @param writer interface for writing code.
+     */
     public final void format(final IReader reader, final IWriter writer) {
         IState currentState = new DefaultState();
-        while (reader.hasChar()) {
-            char c = (char) reader.readChar();
-            Action action = new Action(currentState, c);
-            String subTotal = action.getAction();
+        while (reader.hasMore()) {
+            char c = (char) reader.read();
+            ActionContext action = new ActionContext(currentState, c);
+            String subTotal = action.getResult();
             for (int i = 0; i < subTotal.length(); i++) {
                 writer.writeChar(subTotal.charAt(i));
             }

@@ -2,8 +2,6 @@ package it.sevenbits.writer;
 
 import it.sevenbits.reader.FileReader;
 import it.sevenbits.reader.IReader;
-import it.sevenbits.writer.FileWriter;
-import it.sevenbits.writer.IWriter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +28,6 @@ public class FileWriterTest {
     }
     @Test
     public void testWriteFile() throws IOException {
-        assertEquals(text, reader.readChar());
+        assertEquals(text, reader.read());
     }
 }

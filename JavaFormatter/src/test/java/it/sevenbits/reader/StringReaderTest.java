@@ -1,7 +1,5 @@
 package it.sevenbits.reader;
 
-import it.sevenbits.reader.IReader;
-import it.sevenbits.reader.StringReader;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,8 +17,8 @@ public class StringReaderTest {
     }
     @Test
     public void testRead() throws IOException {
-        assertEquals(true, reader.hasChar());
-        assertEquals('h', reader.readChar());
+        assertEquals(true, reader.hasMore());
+        assertEquals('h', reader.read());
     }
 
 }

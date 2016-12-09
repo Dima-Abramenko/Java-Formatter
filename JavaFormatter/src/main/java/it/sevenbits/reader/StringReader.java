@@ -34,7 +34,7 @@ public class StringReader implements IReader<Character> {
      * @return boolean.
      */
 
-    public final boolean hasChar() {
+    public final boolean hasMore() {
        if (character == -1) {
            return false;
        }
@@ -45,7 +45,7 @@ public class StringReader implements IReader<Character> {
      *
      * @return char.
      */
-    public final Character readChar() {
+    public final Character read() {
         try {
             character = bufReader.read();
         } catch (IOException e) {

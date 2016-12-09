@@ -9,11 +9,11 @@ public interface IReader<T> {
      *
      * @return boolean.
      */
-    boolean hasChar();
+    boolean hasMore();
 
     /**
      *
      * @return char.
      */
-    T readChar();
+    T read();
 }

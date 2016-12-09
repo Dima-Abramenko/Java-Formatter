@@ -1,7 +1,5 @@
 package it.sevenbits.reader;
 
-import it.sevenbits.reader.FileReader;
-import it.sevenbits.reader.IReader;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +20,7 @@ public class FileReaderTest {
     }
     @Test
     public void testReadFile() throws IOException {
-        assertEquals(true, reader.hasChar());
-        assertEquals('p', reader.readChar());
+        assertEquals(true, reader.hasMore());
+        assertEquals('p', reader.read());
     }
 }
