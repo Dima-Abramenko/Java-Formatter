@@ -24,8 +24,9 @@ public class FileWriter implements IWriter<Character> {
     /**
      *
      * @param output comment.
+     * @throws WriterException comment.
      */
-    public FileWriter(final String output) throws WriterException{
+    public FileWriter(final String output) throws WriterException {
         outputURL = output;
         file = new File(outputURL);
         try {

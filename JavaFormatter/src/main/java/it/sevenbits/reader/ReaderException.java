@@ -1,6 +1,5 @@
 package it.sevenbits.reader;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**

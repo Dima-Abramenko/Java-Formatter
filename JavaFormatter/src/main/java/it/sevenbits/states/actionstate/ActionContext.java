@@ -1,5 +1,6 @@
 package it.sevenbits.states.actionstate;
 
+import it.sevenbits.actions.formatter.IAction;
 import it.sevenbits.initializator.Initializator;
 
 /**
@@ -42,18 +43,13 @@ public class ActionContext {
      */
     public final IState getNextState(final IState curState, final char curr) {
         String buff = curState.getStateName() + curr;
-        for (String s : Initializator.mapTransitions.keySet()) {
-            if (s.equals(buff)) {
-                return Initializator.mapTransitions.get(s);
-            }
-        }
-        return curState;
+        return Initializator.mapTransitions.getOrDefault(buff, curState);
     }
     /**
      *
      * @return String.
      */
-    public final String getResult() {
+    public final IAction getAction() {
         return state.getAction(this, current);
     }
 }

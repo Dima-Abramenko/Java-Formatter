@@ -1,5 +1,7 @@
 package it.sevenbits.states.actionstate;
 
+import it.sevenbits.actions.formatter.IAction;
+
 /**
  * Created by oem on 24.11.16.
  */
@@ -10,7 +12,7 @@ public interface IState {
      * @param c comment.
      * @return String.
      */
-    String getAction(final ActionContext action, final char c);
+    IAction getAction(final ActionContext action, final char c);
 
     /**
      *

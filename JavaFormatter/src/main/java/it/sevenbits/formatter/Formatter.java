@@ -1,5 +1,6 @@
 package it.sevenbits.formatter;
 
+import it.sevenbits.actions.formatter.IAction;
 import it.sevenbits.initializator.Initializator;
 import it.sevenbits.reader.IReader;
 import it.sevenbits.reader.ReaderException;
@@ -27,7 +28,8 @@ public class Formatter implements IFormatter<IReader, IWriter> {
      * @param writer comment.
      */
     /*
-    public final void format(final IReader reader, IWriter writer) {
+    public final void format(final IReader reader, IWriter writer)
+            throws ReaderException {
         while (reader.hasMore()) {
             IToken token = (IToken) reader.read();
             String lexeme = token.getLexeme();
@@ -39,31 +41,36 @@ public class Formatter implements IFormatter<IReader, IWriter> {
         }
         writer.close();
     }
-    */
+        */
 
     /**
      *
      * @param reader interface for reading code.
      * @param writer interface for writing code.
+     * @throws ReaderException comment.
      */
-    public final void format(final IReader reader, final IWriter writer) throws ReaderException{
+
+    public final void format(final IReader reader, final IWriter writer)
+            throws ReaderException {
         IState currentState = new DefaultState();
         while (reader.hasMore()) {
-            char c = 0;
+            char c;
             try {
                 c = (char) reader.read();
             } catch (ReaderException e) {
                 throw new ReaderException("can not read", e);
             }
-            ActionContext action = new ActionContext(currentState, c);
-            String subTotal = action.getResult();
+            ActionContext context = new ActionContext(currentState, c);
+            IAction action = context.getAction();
+            String subTotal = action.execute(c);
             for (int i = 0; i < subTotal.length(); i++) {
                 writer.writeChar(subTotal.charAt(i));
             }
-            currentState = action.getNextState(currentState, c);
+            currentState = context.getNextState(currentState, c);
         }
         writer.close();
     }
+
     /**
      *
      * @return String

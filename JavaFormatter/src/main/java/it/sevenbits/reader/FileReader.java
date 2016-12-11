@@ -20,9 +20,11 @@ public class FileReader implements IReader<Character> {
      * BufferedReader for saving characters while reading.
      */
     private BufferedReader bufReader;
+
     /**
      *
      * @param input comment.
+     * @throws ReaderException comment.
      */
     public FileReader(final String input) throws ReaderException {
         inputURL = input;
@@ -48,9 +50,10 @@ public class FileReader implements IReader<Character> {
 
     /**
      *
-     * @return char.
+     * @return Character.
+     * @throws ReaderException comment.
      */
-    public final Character read() throws ReaderException{
+    public final Character read() throws ReaderException {
 
         try {
             character = bufReader.read();

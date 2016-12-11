@@ -9,9 +9,10 @@ import it.sevenbits.reader.ReaderException;
  */
 public interface IFormatter<T, U> {
     /**
-     *  entry method.
-     * @param reader interface for reading code.
-     * @param writer interface for writing code.
+     *
+     * @param reader comment.
+     * @param writer comment.
+     * @throws ReaderException comment.
      */
     void format(final T reader, final U writer) throws ReaderException;
 }

@@ -22,14 +22,9 @@ public class DefaultState implements IState {
      * @param c comment.
      * @return String.
      */
-    public final String getAction(final ActionContext action, final char c) {
-
-        for (String s : Initializator.mapActions.keySet()) {
-            if (s.equals(Character.toString(c))) {
-                return Initializator.mapActions.get(s).execute(c);
-            }
-        }
-        return new ActionDefault().execute(c);
+    public final IAction getAction(final ActionContext action, final char c) {
+        return Initializator.mapActions.getOrDefault(Character.toString(c),
+                new ActionDefault());
     }
     /**
      *

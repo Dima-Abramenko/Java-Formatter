@@ -1,6 +1,7 @@
 package it.sevenbits.states.lexerstate;
 
 import it.sevenbits.actions.lexer.ActionLexerDefault;
+import it.sevenbits.actions.lexer.IActionLexer;
 import it.sevenbits.initializator.Initializator;
 
 /**
@@ -9,17 +10,13 @@ import it.sevenbits.initializator.Initializator;
 public class DefaultLexerState implements IStateLexer {
     /**
      *
-     * @param action comment.
+     * @param act comment.
      * @param c comment.
      * @return String.
      */
-    public final String getAction(final LexerContext action, final char c) {
-        for (String s : Initializator.mapLexerActions.keySet()) {
-            if (s.equals(Character.toString(c))) {
-                return Initializator.mapLexerActions.get(s).execute(c);
-            }
-        }
-        return new ActionLexerDefault().execute(c);
+    public final IActionLexer getAction(final LexerContext act, final char c) {
+        return Initializator.mapLexerActions.getOrDefault(Character.toString(c),
+                new ActionLexerDefault());
     }
 
     /**

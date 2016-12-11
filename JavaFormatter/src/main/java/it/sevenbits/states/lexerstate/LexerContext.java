@@ -1,5 +1,6 @@
 package it.sevenbits.states.lexerstate;
 
+import it.sevenbits.actions.lexer.IActionLexer;
 import it.sevenbits.initializator.Initializator;
 
 
@@ -27,25 +28,20 @@ public class LexerContext {
 
     /**
      *
-     * @param state comment.
+     * @param st comment.
      * @param c comment.
      * @return String.
      */
-    public final IStateLexer NextState(final IStateLexer state, final char c) {
-        String buff = state.getStateName() + c;
-        for (String s : Initializator.mapLexerTransition.keySet()) {
-            if (s.equals(buff)) {
-                return Initializator.mapLexerTransition.get(s);
-            }
-        }
-        return state;
+    public final IStateLexer nextState(final IStateLexer st, final char c) {
+        String buff = st.getStateName() + c;
+        return Initializator.mapLexerTransition.getOrDefault(buff, st);
     }
 
     /**
      *
      * @return String.
      */
-    public final String getResult() {
+    public final IActionLexer getResult() {
         return state.getAction(this, current);
     }
 }

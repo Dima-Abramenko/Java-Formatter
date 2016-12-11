@@ -4,9 +4,9 @@ import it.sevenbits.actions.formatter.ActionDefault;
 import it.sevenbits.actions.formatter.IAction;
 
 /**
- * Created by oem on 04.12.16.
+ * Created by oem on 12.12.16.
  */
-public class StringLiteralState implements IState {
+public class BlockComState implements IState {
     /**
      *
      * @param action comment.
@@ -23,6 +23,6 @@ public class StringLiteralState implements IState {
      * @return String.
      */
     public final String getStateName() {
-        return "Str";
+        return "Block";
     }
 }

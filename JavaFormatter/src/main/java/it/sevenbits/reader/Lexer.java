@@ -37,7 +37,8 @@ public class Lexer implements IReader<IToken> {
 
     /**
      *
-     * @return Itoken.
+     * @return IToken.
+     * @throws ReaderException comment.
      */
     public final IToken read() throws ReaderException {
         IStateLexer stateLexer = new DefaultLexerState();

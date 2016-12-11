@@ -13,7 +13,8 @@ public interface IReader<T> {
 
     /**
      *
-     * @return char.
+     * @return T
+     * @throws ReaderException comment.
      */
     T read() throws ReaderException;
 }
