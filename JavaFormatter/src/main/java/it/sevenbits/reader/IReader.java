@@ -15,5 +15,5 @@ public interface IReader<T> {
      *
      * @return char.
      */
-    T read();
+    T read() throws ReaderException;
 }

@@ -25,13 +25,13 @@ public class FileWriter implements IWriter<Character> {
      *
      * @param output comment.
      */
-    public FileWriter(final String output) {
+    public FileWriter(final String output) throws WriterException{
         outputURL = output;
         file = new File(outputURL);
         try {
             printWriter = new PrintWriter(file.getAbsolutePath());
         } catch (FileNotFoundException e) {
-            e.getMessage();
+            throw new WriterException("File not found", e);
         }
     }
 

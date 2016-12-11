@@ -39,10 +39,15 @@ public class Lexer implements IReader<IToken> {
      *
      * @return Itoken.
      */
-    public final IToken read() {
+    public final IToken read() throws ReaderException {
         IStateLexer stateLexer = new DefaultLexerState();
         while (reader.hasMore()) {
-            Character c = reader.read();
+            Character c = null;
+            try {
+                c = reader.read();
+            } catch (ReaderException e) {
+                throw new ReaderException("can not read", e);
+            }
             LexerContext action = new LexerContext(stateLexer, c);
             lexeme.append(action.getResult());
         }

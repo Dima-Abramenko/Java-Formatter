@@ -14,12 +14,12 @@ public class FileReaderTest {
     private IReader reader;
     private String inputURL;
     @Before
-    public void setUp() throws FileNotFoundException {
+    public void setUp() throws ReaderException {
         inputURL = "src/main/resources/input.txt";
         reader = new FileReader(inputURL);
     }
     @Test
-    public void testReadFile() throws IOException {
+    public void testReadFile() throws ReaderException {
         assertEquals(true, reader.hasMore());
         assertEquals('p', reader.read());
     }

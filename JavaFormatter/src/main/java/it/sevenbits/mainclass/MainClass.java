@@ -4,8 +4,10 @@ import it.sevenbits.formatter.Formatter;
 import it.sevenbits.reader.FileReader;
 import it.sevenbits.reader.IReader;
 import it.sevenbits.reader.Lexer;
+import it.sevenbits.reader.ReaderException;
 import it.sevenbits.writer.FileWriter;
 import it.sevenbits.writer.IWriter;
+import it.sevenbits.writer.WriterException;
 
 import java.io.IOException;
 
@@ -18,7 +20,7 @@ import java.io.IOException;
      * @param args command line args, ignored.
      * @throws IOException comment.
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException, ReaderException, WriterException {
         final String inputURL = "src/main/resources/input.txt";
         final String outputURL = "src/main/resources/output.txt";
 

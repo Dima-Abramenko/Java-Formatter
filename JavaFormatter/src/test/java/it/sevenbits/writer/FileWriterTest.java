@@ -2,6 +2,7 @@ package it.sevenbits.writer;
 
 import it.sevenbits.reader.FileReader;
 import it.sevenbits.reader.IReader;
+import it.sevenbits.reader.ReaderException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class FileWriterTest {
     private String outputURL;
     private  char text;
     @Before
-    public void setUp() throws FileNotFoundException {
+    public void setUp() throws FileNotFoundException, WriterException, ReaderException {
         outputURL = "src/main/resources/output.txt";
         writer = new FileWriter(outputURL);
         reader = new FileReader(outputURL);
@@ -27,7 +28,7 @@ public class FileWriterTest {
         writer.close();
     }
     @Test
-    public void testWriteFile() throws IOException {
+    public void testWriteFile() throws IOException, ReaderException {
         assertEquals(text, reader.read());
     }
 }

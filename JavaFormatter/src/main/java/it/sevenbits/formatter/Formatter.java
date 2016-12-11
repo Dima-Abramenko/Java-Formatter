@@ -2,6 +2,7 @@ package it.sevenbits.formatter;
 
 import it.sevenbits.initializator.Initializator;
 import it.sevenbits.reader.IReader;
+import it.sevenbits.reader.ReaderException;
 import it.sevenbits.states.actionstate.ActionContext;
 import it.sevenbits.states.actionstate.DefaultState;
 import it.sevenbits.states.actionstate.IState;
@@ -45,10 +46,15 @@ public class Formatter implements IFormatter<IReader, IWriter> {
      * @param reader interface for reading code.
      * @param writer interface for writing code.
      */
-    public final void format(final IReader reader, final IWriter writer) {
+    public final void format(final IReader reader, final IWriter writer) throws ReaderException{
         IState currentState = new DefaultState();
         while (reader.hasMore()) {
-            char c = (char) reader.read();
+            char c = 0;
+            try {
+                c = (char) reader.read();
+            } catch (ReaderException e) {
+                throw new ReaderException("can not read", e);
+            }
             ActionContext action = new ActionContext(currentState, c);
             String subTotal = action.getResult();
             for (int i = 0; i < subTotal.length(); i++) {

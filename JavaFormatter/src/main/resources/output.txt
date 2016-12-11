@@ -5,7 +5,7 @@ public static String reading("This is ;a string { line") throws IOException {
 		 
 	}
  return data;
-
+	
 //this is comment
 /* This is comment  hello */
 

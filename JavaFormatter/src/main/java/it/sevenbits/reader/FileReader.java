@@ -24,13 +24,15 @@ public class FileReader implements IReader<Character> {
      *
      * @param input comment.
      */
-    public FileReader(final String input) {
+    public FileReader(final String input) throws ReaderException {
         inputURL = input;
+
         try {
             bufReader = new BufferedReader(new java.io.FileReader(inputURL));
         } catch (FileNotFoundException e) {
-            e.getMessage();
+            throw new ReaderException("File not found", e);
         }
+
     }
 
     /**
@@ -48,12 +50,14 @@ public class FileReader implements IReader<Character> {
      *
      * @return char.
      */
-    public final Character read() {
+    public final Character read() throws ReaderException{
+
         try {
             character = bufReader.read();
         } catch (IOException e) {
-            e.getMessage();
+            throw new ReaderException("Can not read", e);
         }
+
         char c = (char) character;
         return c;
     }

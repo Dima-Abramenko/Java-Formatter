@@ -16,7 +16,7 @@ public class StringReaderTest {
         reader = new StringReader("hello");
     }
     @Test
-    public void testRead() throws IOException {
+    public void testRead() throws IOException, ReaderException {
         assertEquals(true, reader.hasMore());
         assertEquals('h', reader.read());
     }
