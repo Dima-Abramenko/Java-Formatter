@@ -1,5 +1,7 @@
 package it.sevenbits.reader;
 
+import it.sevenbits.initializator.Initializator;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -42,6 +44,7 @@ public class FileReader implements IReader<Character> {
      */
     public final boolean hasMore() {
         if (character == -1) {
+            Initializator.isEnd = true;
             return false;
         }
         return true;

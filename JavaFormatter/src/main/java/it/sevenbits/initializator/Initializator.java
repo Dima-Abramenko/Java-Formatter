@@ -48,6 +48,10 @@ public class Initializator {
      */
     public static HashMap<String, IStateLexer> mapLexerTransition;
     /**
+     * comment.
+     */
+    public static boolean isEnd = false;
+    /**
      *
      */
     public Initializator() {

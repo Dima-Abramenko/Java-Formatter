@@ -1,6 +1,7 @@
 package it.sevenbits.reader;
 
 import it.sevenbits.actions.lexer.IActionLexer;
+import it.sevenbits.initializator.Initializator;
 import it.sevenbits.states.lexerstate.DefaultLexerState;
 import it.sevenbits.states.lexerstate.IStateLexer;
 import it.sevenbits.states.lexerstate.LexerContext;
@@ -15,14 +16,6 @@ public class Lexer implements IReader<IToken> {
      * comment.
      */
     private IReader<Character> reader;
-    /**
-     * comment.
-     */
-    private static int count = 0;
-    /**
-     * comment.
-     */
-    private static final int SIZE = 100;
     /**
      * comment.
      */
@@ -41,9 +34,7 @@ public class Lexer implements IReader<IToken> {
      * @return boolean.
      */
     public final boolean hasMore() {
-
-        while (count <= SIZE) {
-            count++;
+        while (!Initializator.isEnd) {
             return true;
         }
         return false;
