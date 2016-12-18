@@ -4,7 +4,6 @@ import it.sevenbits.actions.formatter.ActionDefault;
 import it.sevenbits.actions.formatter.IAction;
 import it.sevenbits.initializator.Initializator;
 
-import java.util.HashMap;
 
 
 /**
@@ -12,18 +11,13 @@ import java.util.HashMap;
  */
 public class DefaultState implements IState {
     /**
-     * comment.
-     */
-    private HashMap<String, IAction> chooser;
-
-    /**
      *
      * @param action comment.
      * @param c comment.
      * @return String.
      */
-    public final IAction getAction(final ActionContext action, final char c) {
-        return Initializator.mapActions.getOrDefault(Character.toString(c),
+    public final IAction getAction(final ActionContext action, final String c) {
+        return Initializator.mapActions.getOrDefault(c,
                 new ActionDefault());
     }
     /**
@@ -31,7 +25,7 @@ public class DefaultState implements IState {
      * @return String.
      */
     public final String getStateName() {
-        return "DefaultState";
+        return "default";
     }
 }
 

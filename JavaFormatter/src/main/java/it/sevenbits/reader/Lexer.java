@@ -1,5 +1,6 @@
 package it.sevenbits.reader;
 
+import it.sevenbits.actions.lexer.IActionLexer;
 import it.sevenbits.states.lexerstate.DefaultLexerState;
 import it.sevenbits.states.lexerstate.IStateLexer;
 import it.sevenbits.states.lexerstate.LexerContext;
@@ -14,6 +15,14 @@ public class Lexer implements IReader<IToken> {
      * comment.
      */
     private IReader<Character> reader;
+    /**
+     * comment.
+     */
+    private static int count = 0;
+    /**
+     * comment.
+     */
+    private static final int SIZE = 100;
     /**
      * comment.
      */
@@ -32,7 +41,12 @@ public class Lexer implements IReader<IToken> {
      * @return boolean.
      */
     public final boolean hasMore() {
-        return true;
+
+        while (count <= SIZE) {
+            count++;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -41,17 +55,32 @@ public class Lexer implements IReader<IToken> {
      * @throws ReaderException comment.
      */
     public final IToken read() throws ReaderException {
+
         IStateLexer stateLexer = new DefaultLexerState();
         while (reader.hasMore()) {
-            Character c = null;
-            try {
-                c = reader.read();
-            } catch (ReaderException e) {
-                throw new ReaderException("can not read", e);
+            Character c = reader.read();
+
+            LexerContext context = new LexerContext(stateLexer, c);
+            IActionLexer action = context.getAction();
+            String buff = action.execute(c);
+            if (buff == "skip") {
+                String s = lexeme.toString();
+                System.out.println(s);
+                lexeme.delete(0, lexeme.length());
+                return new Token(s);
             }
-            LexerContext action = new LexerContext(stateLexer, c);
-            lexeme.append(action.getResult());
+            if (buff == "sep") {
+                String s = lexeme.toString();
+                System.out.println(s);
+                lexeme.delete(0, lexeme.length());
+                lexeme.append(c);
+                return new Token(s);
+            }
+                lexeme.append(buff);
+
+            stateLexer = context.nextState(stateLexer, c);
         }
-    return new Token(lexeme.toString());
+
+        return new Token("");
     }
 }

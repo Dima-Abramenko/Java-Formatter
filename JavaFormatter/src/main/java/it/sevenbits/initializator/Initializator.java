@@ -5,23 +5,21 @@ import it.sevenbits.actions.formatter.IAction;
 import it.sevenbits.actions.formatter.ActionDefault;
 import it.sevenbits.actions.formatter.ActionOpeningBrace;
 import it.sevenbits.actions.formatter.ActionClosingBrace;
-import it.sevenbits.actions.lexer.ActionLexerComment;
+import it.sevenbits.actions.lexer.ActionLexerSeparator;
 import it.sevenbits.actions.lexer.ActionLexerDefault;
 import it.sevenbits.actions.lexer.ActionLexerSkip;
 import it.sevenbits.actions.lexer.IActionLexer;
+import it.sevenbits.states.actionstate.ForState;
 import it.sevenbits.states.actionstate.IState;
-import it.sevenbits.states.actionstate.BlockComState;
-import it.sevenbits.states.actionstate.CommentState;
 import it.sevenbits.states.actionstate.DefaultState;
-import it.sevenbits.states.actionstate.EndBlockComState;
-import it.sevenbits.states.actionstate.InLineComState;
-import it.sevenbits.states.actionstate.StringLiteralState;
-import it.sevenbits.states.lexerstate.InLineCommentLexerState;
-import it.sevenbits.states.lexerstate.EndCommentLexerState;
-import it.sevenbits.states.lexerstate.CommentLexerState;
 import it.sevenbits.states.lexerstate.BlockCommentLexerState;
+import it.sevenbits.states.lexerstate.CommentLexerState;
 import it.sevenbits.states.lexerstate.DefaultLexerState;
+import it.sevenbits.states.lexerstate.EndCommentLexerState;
+import it.sevenbits.states.lexerstate.InLineCommentLexerState;
 import it.sevenbits.states.lexerstate.IStateLexer;
+import it.sevenbits.states.lexerstate.StringLexerState;
+
 
 import java.util.HashMap;
 
@@ -65,22 +63,21 @@ public class Initializator {
         mapActions.put(";", actionSem);
         // отображение перехода состояний форматтера.
         mapTransitions = new HashMap<>();
-        mapTransitions.put("DefaultState\"", new StringLiteralState());
-        mapTransitions.put("DefaultState/", new CommentState());
-        mapTransitions.put("Str\"", new DefaultState());
-        mapTransitions.put("Comm/", new InLineComState());
-        mapTransitions.put("Comm*", new BlockComState());
-        mapTransitions.put("Block*", new EndBlockComState());
-        mapTransitions.put("InLine\n", new DefaultState());
-        mapTransitions.put("End/", new DefaultState());
+        mapTransitions.put("defaultfor", new ForState());
+        mapTransitions.put("for)", new DefaultState());
         // отображение действий лексера.
         IActionLexer defaultAction = new ActionLexerDefault();
-        IActionLexer commentAction = new ActionLexerComment();
         IActionLexer skipAction = new ActionLexerSkip();
+        IActionLexer separator = new ActionLexerSeparator();
         mapLexerActions = new HashMap<>();
         mapLexerActions.put(" ", skipAction);
         mapLexerActions.put("\n", skipAction);
         mapLexerActions.put("\t", skipAction);
+        mapLexerActions.put(";", separator);
+        mapLexerActions.put("(", separator);
+        mapLexerActions.put(")", separator);
+        mapLexerActions.put(",", separator);
+
         mapLexerActions.put("simple", defaultAction);
         // отображение перехода состояний лексера.
         mapLexerTransition = new HashMap<>();
@@ -90,5 +87,7 @@ public class Initializator {
         mapLexerTransition.put("inline\n", new DefaultLexerState());
         mapLexerTransition.put("block*", new EndCommentLexerState());
         mapLexerTransition.put("endcomment/", new DefaultLexerState());
+        mapLexerTransition.put("default\"", new StringLexerState());
+        mapLexerTransition.put("string\"", new DefaultLexerState());
     }
 }

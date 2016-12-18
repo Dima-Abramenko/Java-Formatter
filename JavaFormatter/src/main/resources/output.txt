@@ -1,1 +1,11 @@
-c
+public static void main (final String[] args ) throws ReaderException , WriterException {
+	final String inputURL = "src/main/resources/input.txt" ;
+	final String outputURL = "src/main/resources/output.txt" ;
+	Formatter formatter = new Formatter ( ) ;
+	for  (int i = 0 ; i <10 ; i++ ) 
+}
+//this is{} ;comment
+/* This is{}; comment
+hello */ 
+}
+                                                     

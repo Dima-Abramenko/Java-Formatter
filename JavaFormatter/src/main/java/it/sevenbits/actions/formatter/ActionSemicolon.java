@@ -11,7 +11,7 @@ public class ActionSemicolon implements IAction {
      * @param current comment.
      * @return String.
      */
-    public final String execute(final char current) {
+    public final String execute(final String current) {
         StringBuilder sb = new StringBuilder();
         sb.append(current);
         sb.append("\n");

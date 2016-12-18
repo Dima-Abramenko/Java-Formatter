@@ -9,7 +9,7 @@ public class ActionDefault implements IAction {
      * @param current comment.
      * @return String.
      */
-    public final String execute(final char current) {
-        return Character.toString(current);
+    public final String execute(final String current) {
+        return current + " ";
     }
 }

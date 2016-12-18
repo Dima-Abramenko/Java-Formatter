@@ -12,7 +12,7 @@ public interface IState {
      * @param c comment.
      * @return String.
      */
-    IAction getAction(final ActionContext action, final char c);
+    IAction getAction(final ActionContext action, final String c);
 
     /**
      *

@@ -9,5 +9,5 @@ public interface IAction {
      * @return String
      * @param current comment.
      */
-    String execute(final char current);
+    String execute(final String current);
 }

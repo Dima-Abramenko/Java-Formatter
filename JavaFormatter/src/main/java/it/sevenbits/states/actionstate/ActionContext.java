@@ -14,12 +14,12 @@ public class ActionContext {
     /**
      * comment.
      */
-    private char current;
+    private String current;
     /**
      * @param iState comment.
      * @param c comment.
      */
-    public ActionContext(final IState iState, final char c) {
+    public ActionContext(final IState iState, final String c) {
         state = iState;
         current = c;
     }
@@ -41,7 +41,7 @@ public class ActionContext {
      * @param curr comment.
      * @return String.
      */
-    public final IState getNextState(final IState curState, final char curr) {
+    public final IState getNextState(final IState curState, final String curr) {
         String buff = curState.getStateName() + curr;
         return Initializator.mapTransitions.getOrDefault(buff, curState);
     }

@@ -28,12 +28,7 @@ import it.sevenbits.writer.WriterException;
         IReader<Character> fileReader = new FileReader(inputURL);
         IWriter<Character> fileWriter = new FileWriter(outputURL);
         IReader<IToken> lexer = new Lexer(fileReader);
-        //formatter.format(lexer, fileWriter);
-        formatter.format(fileReader, fileWriter);
-        System.out.println(formatter.getResult());
-
-
-
-
+        formatter.format(lexer, fileWriter);
+        //formatter.format(fileReader, fileWriter);
     }
 }

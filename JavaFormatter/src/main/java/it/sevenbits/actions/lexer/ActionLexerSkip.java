@@ -10,6 +10,6 @@ public class ActionLexerSkip implements IActionLexer {
      * @return String.
      */
     public final String execute(final Character c) {
-        return "";
+        return "skip";
     }
 }

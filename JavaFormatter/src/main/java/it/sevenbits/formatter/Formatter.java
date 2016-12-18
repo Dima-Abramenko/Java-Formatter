@@ -7,13 +7,14 @@ import it.sevenbits.reader.ReaderException;
 import it.sevenbits.states.actionstate.ActionContext;
 import it.sevenbits.states.actionstate.DefaultState;
 import it.sevenbits.states.actionstate.IState;
+import it.sevenbits.token.IToken;
 import it.sevenbits.writer.IWriter;
 
 
 /**
  * formatting input java-code.
  */
-public class Formatter implements IFormatter<IReader, IWriter> {
+public class Formatter implements IFormatter<IReader<IToken>, IWriter> {
     /**
      * needs to buffer last char.
      */
@@ -22,55 +23,29 @@ public class Formatter implements IFormatter<IReader, IWriter> {
      * comment.
      */
     private Initializator init = new Initializator();
-    /**
-     * entry method.
-     * @param reader comment.
-     * @param writer comment.
-     */
-    /*
-    public final void format(final IReader reader, IWriter writer)
-            throws ReaderException {
-        while (reader.hasMore()) {
-            IToken token = (IToken) reader.read();
-            String lexeme = token.getLexeme();
-            // do smth
-            String subTotal = "";
-            for (int i = 0; i < subTotal.length(); i++) {
-                writer.writeChar(subTotal.charAt(i));
-            }
-        }
-        writer.close();
-    }
-        */
 
     /**
      *
-     * @param reader interface for reading code.
-     * @param writer interface for writing code.
+     * @param reader comment.
+     * @param writer comment.
      * @throws ReaderException comment.
      */
-
-    public final void format(final IReader reader, final IWriter writer)
+    public final void format(final IReader<IToken> reader, final IWriter writer)
             throws ReaderException {
         IState currentState = new DefaultState();
         while (reader.hasMore()) {
-            char c;
-            try {
-                c = (char) reader.read();
-            } catch (ReaderException e) {
-                throw new ReaderException("can not read", e);
-            }
-            ActionContext context = new ActionContext(currentState, c);
+            IToken token = reader.read();
+            String lexeme = token.getLexeme();
+            ActionContext context = new ActionContext(currentState, lexeme);
             IAction action = context.getAction();
-            String subTotal = action.execute(c);
+            String subTotal = action.execute(lexeme);
             for (int i = 0; i < subTotal.length(); i++) {
                 writer.writeChar(subTotal.charAt(i));
             }
-            currentState = context.getNextState(currentState, c);
+            currentState = context.getNextState(currentState, lexeme);
         }
         writer.close();
     }
-
     /**
      *
      * @return String

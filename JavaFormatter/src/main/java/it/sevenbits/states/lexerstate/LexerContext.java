@@ -41,7 +41,7 @@ public class LexerContext {
      *
      * @return String.
      */
-    public final IActionLexer getResult() {
+    public final IActionLexer getAction() {
         return state.getAction(this, current);
     }
 }
